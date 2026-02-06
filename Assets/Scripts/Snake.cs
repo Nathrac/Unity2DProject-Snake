@@ -9,11 +9,16 @@ public class Snake : MonoBehaviour
     public float moveInterval = 0.5f;
     private float moveTimer = 0.0f;
 
-    void Start()
+    private void OnEnable()
     {
-        
+        FoodDisable.foodEaten += Grow;
     }
-    
+
+    private void OnDisable()
+    {
+        FoodDisable.foodEaten -= Grow;
+    }
+
     private void FixedUpdate()
     {
         moveTimer += Time.fixedDeltaTime;
@@ -39,5 +44,10 @@ public class Snake : MonoBehaviour
         {
             nextDirection = input;
         }
+    }
+
+    private void Grow()
+    {
+        
     }
 }
